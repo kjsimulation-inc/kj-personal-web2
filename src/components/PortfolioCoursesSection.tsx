@@ -197,13 +197,13 @@ export const PortfolioCoursesSection: React.FC = () => {
       {/* Glassmorphic Manifesto Card */}
       <div className="glass-card max-w-4xl mx-auto p-8 md:p-10 rounded-2xl border border-[#00d2ff]/25 bg-[#0c1726]/65 backdrop-blur-md shadow-[0_0_30px_rgba(0,210,255,0.08)] mb-14 text-left space-y-4">
         <div className="border-l-4 border-[#00d2ff] pl-4 py-1.5 text-[#00d2ff] font-serif text-lg font-semibold italic bg-[#00d2ff]/5 rounded-r-lg">
-          「二十年磨一劍，將天賦與認知科學融合成一套企業經典課程」
+          「二十年磨一劍，將天賦與認知科學融合成企業經典課程」
         </div>
         <p className="text-base text-[#dce3f0] font-light leading-relaxed md:leading-loose">
-          我成立木人巷公司之後，累計創作了二十多門企業職能課程！許多客戶都好奇：為什麼我可以編寫出這麼多跨領域的教材？我想這得歸功於天賦加努力所產生的綜效吧！
+          成立木人巷公司之後，我除了為客戶開發專屬課程，也為公司創作了二十多門套裝職能課程！許多客戶都好奇：為什麼我可以寫出這麼多跨領域教材？我想這得歸功於天賦加努力所產生的綜效吧！
         </p>
         <p className="text-base text-[#dce3f0] font-light leading-relaxed md:leading-loose">
-          我從小學東西就特別快！這天賦對我的工作很有幫助，博士時期所探索的「認知科學、學習理論」更讓我如虎添翼。而AI的崛起，更提昇了我創作的廣度、深度、與工作效率！讓我發憤忘食，樂以忘憂，不知老之將至…
+          我從小學東西就特別快，博士時期所研究的「認知科學、學習理論」也增強了我融會貫通的能力，而近年來AI的崛起，更提昇了我創作的廣度、深度、與效率！讓我發憤忘食，樂以忘憂，不知老之將至…
         </p>
       </div>
 
