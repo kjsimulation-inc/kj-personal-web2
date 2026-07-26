@@ -20,14 +20,7 @@ export const Hero: React.FC<HeroProps> = ({ animTrigger = 0 }) => {
         filter: 'blur(12px)',
         duration: 1.1,
       })
-      // 2. Subtitle line ("以 數位學習 建構未來，用 教學設計 萃取智慧。")
-      .from('.hero-anim-sub', {
-        y: 30,
-        opacity: 0,
-        filter: 'blur(10px)',
-        duration: 1.0,
-      }, '-=0.7')
-      // 3. 4 Chinese text lines gradually revealing in sequence
+      // 2. 4 Chinese text lines gradually revealing in sequence
       .from('.hero-anim-tag', {
         x: -30,
         opacity: 0,
@@ -69,10 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ animTrigger = 0 }) => {
               田冠鈞 <span className="text-2xl md:text-3xl font-sans font-normal text-[#8ca9c4]">博士</span>
             </h1>
 
-            <p className="hero-anim-sub text-xl md:text-2xl font-light text-white leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              以 <span className="font-semibold text-[#00d2ff]">數位學習</span> 建構未來，
-              用 <span className="font-semibold text-[#00ff88]">教學設計</span> 萃取智慧。
-            </p>
+
 
             {/* 4 Lines of Pure Text (No buttons, No English) */}
             <div ref={tagsRef} className="mt-8 space-y-4 pt-2 max-w-md">
