@@ -57,9 +57,8 @@ export const Hero: React.FC<HeroProps> = ({ animTrigger = 0 }) => {
           alt="田冠鈞博士"
           className="h-full w-full object-cover object-center opacity-100 filter brightness-[1.05] contrast-[1.05] transition-all duration-700"
         />
-        {/* Gradient strictly focused on left text area (0% to 55%), leaving right portrait clear */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070e17] via-[#070e17]/60 via-50% to-transparent to-75%" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070e17] via-transparent to-[#070e17]/20" />
+        {/* Solid Mask Overlay (50% opacity, no gradient) */}
+        <div className="absolute inset-0 bg-[#070e17]/50" />
       </div>
 
       {/* Main Hero Content */}
