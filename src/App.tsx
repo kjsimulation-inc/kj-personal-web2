@@ -10,6 +10,14 @@ import { AcademicSection } from './components/AcademicSection';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
+  const [heroAnimTrigger, setHeroAnimTrigger] = useState(0);
+
+  const handleSelectSection = (id: string) => {
+    setActiveSection(id);
+    if (id === 'hero') {
+      setHeroAnimTrigger((prev) => prev + 1);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#070e17] text-[#dce3f0] font-sans antialiased selection:bg-[#00d2ff]/30 selection:text-[#00d2ff]">
@@ -21,11 +29,11 @@ function App() {
 
       <div className="flex relative z-10">
         {/* Left Vertical Navigation Sidebar */}
-        <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
+        <Sidebar activeSection={activeSection} setActiveSection={handleSelectSection} />
 
         {/* Main Content Area */}
         <main className="flex-1 lg:ml-72 min-h-screen">
-          <Hero />
+          <Hero animTrigger={heroAnimTrigger} />
           <About />
           <CareerMilestones />
           <PortfolioCoursesSection />

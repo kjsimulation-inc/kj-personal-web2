@@ -82,10 +82,10 @@ export const AcademicSection: React.FC = () => {
       {/* Glassmorphic Manifesto Card */}
       <div className="glass-card max-w-4xl mx-auto p-8 md:p-10 rounded-2xl border border-[#00d2ff]/25 bg-[#0c1726]/65 backdrop-blur-md shadow-[0_0_30px_rgba(0,210,255,0.08)] mb-14 text-left space-y-4">
         <div className="border-l-4 border-[#00d2ff] pl-4 py-1.5 text-[#00d2ff] font-serif text-lg font-semibold italic bg-[#00d2ff]/5 rounded-r-lg">
-          「以學術理論為根基，在企業實務中淬煉真知與卓越著作」
+          「以學術理論為根基，在企業實務中淬煉真知」
         </div>
         <p className="text-base text-[#dce3f0] font-light leading-relaxed md:leading-loose">
-          從清華大學人工智慧研究助理、美國印第安那大學博士研究，到淡江大學與清華大學任教，累積超過 36 場國內外公開演講發表與 19 篇國際期刊、博士論文與專書著作。將教學系統科技理論深刻印證於產業實務中。
+          我曾在美國印第安那大學攻讀博士，也曾在淡江大學與清華大學任教，即使投入木人巷公司之後，也偶爾應邀演講或授課，也就累積了一些學術資歷或著作。雖然這些作品的內容，可能已不符最新的理論或潮流，卻是我一路在數位學習之路持續努力的見證！
         </p>
       </div>
 
