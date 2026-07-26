@@ -97,8 +97,8 @@ export const AcademicSection: React.FC = () => {
               <Mic size={24} />
             </div>
             <div>
-              <h3 className="font-serif text-2xl font-bold text-white">公開演講與研討會</h3>
-              <p className="text-xs text-[#8ca9c4]">共 {speeches.length} 篇公開演講與國際研討會發表</p>
+              <h3 className="font-serif text-2xl font-bold text-white">公開演講與企業訓練</h3>
+              <p className="text-xs text-[#8ca9c4]">以下列舉{speeches.length}場</p>
             </div>
           </div>
 
@@ -132,8 +132,8 @@ export const AcademicSection: React.FC = () => {
               <FileText size={24} />
             </div>
             <div>
-              <h3 className="font-serif text-2xl font-bold text-white">期刊、論文與專書著作</h3>
-              <p className="text-xs text-[#8ca9c4]">共 {papers.length} 篇期刊、論文與書籍著作</p>
+              <h3 className="font-serif text-2xl font-bold text-white">期刊與論文發表</h3>
+              <p className="text-xs text-[#8ca9c4]">以下列舉{papers.length}篇</p>
             </div>
           </div>
 
