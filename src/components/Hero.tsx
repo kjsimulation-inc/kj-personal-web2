@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ animTrigger = 0 }) => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/img/hero-bg.jpg"
+          src="./img/hero-bg.jpg"
           alt="田冠鈞博士"
           className="h-full w-full object-cover object-center opacity-100 filter brightness-[1.05] contrast-[1.05] transition-all duration-700"
         />

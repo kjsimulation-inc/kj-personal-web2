@@ -74,7 +74,7 @@ export const About: React.FC = () => {
         <div className="lg:col-span-5 flex justify-center">
           <div className="relative group rounded-2xl overflow-hidden border-2 border-[#00d2ff]/40 shadow-[0_0_30px_rgba(0,210,255,0.2)]">
             <img
-              src="/img/my-profile-img.jpg"
+              src="./img/my-profile-img.jpg"
               alt="田冠鈞"
               className="w-full h-auto max-h-[460px] object-cover transition-transform duration-500 group-hover:scale-105"
             />

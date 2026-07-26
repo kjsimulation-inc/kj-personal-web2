@@ -219,7 +219,7 @@ export const PortfolioCoursesSection: React.FC = () => {
           >
             <div className="relative aspect-video bg-[#050b14] overflow-hidden">
               <img
-                src={item.img}
+                src={item.img.startsWith('/') ? '.' + item.img : item.img}
                 alt={item.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />

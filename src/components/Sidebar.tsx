@@ -59,7 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection, setActiveSectio
             <div className="relative group cursor-pointer" onClick={() => scrollTo('hero')}>
               <div className="h-24 w-24 rounded-full p-1 bg-gradient-to-tr from-[#00d2ff] to-[#00ff88] shadow-[0_0_25px_rgba(0,210,255,0.4)] group-hover:scale-105 transition-transform duration-300">
                 <img
-                  src="/img/my-profile-img2.jpg"
+                  src="./img/my-profile-img2.jpg"
                   alt="田冠鈞博士"
                   className="h-full w-full rounded-full object-cover"
                 />
