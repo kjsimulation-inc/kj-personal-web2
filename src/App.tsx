@@ -77,7 +77,7 @@ function App() {
 
           {/* Minimalist Footer with only Kwan-Jun Tian © 2026 */}
           <footer className="py-12 border-t border-[#1b2d47] text-center text-[#8ca9c4]">
-            <p className="text-sm tracking-wide font-normal">Kwan-Jun Tian © 2026</p>
+            <p className="text-sm tracking-wide font-normal">Kwan-Jun Tyan © 2026</p>
           </footer>
         </main>
       </div>
