@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Calendar, Building, GraduationCap, Award, ChevronDown, ChevronUp } from 'lucide-react';
 
 export const CareerMilestones: React.FC = () => {
   const [showAllExperiences, setShowAllExperiences] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start 75%', 'end 75%'],
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   const experiences = [
     {
@@ -144,16 +157,16 @@ export const CareerMilestones: React.FC = () => {
   const visibleExperiences = showAllExperiences ? experiences : experiences.slice(0, 5);
 
   return (
-    <section id="resume" className="py-24 relative container mx-auto px-6 max-w-6xl">
+    <section id="resume" ref={sectionRef} className="py-24 relative container mx-auto px-6 max-w-6xl">
       {/* Section Header */}
       <div className="text-center max-w-4xl mx-auto mb-12 space-y-4">
         <h2 className="font-serif text-3xl md:text-4xl font-bold text-white">職涯與學歷</h2>
-        <div className="h-1 w-20 bg-[#00d2ff] mx-auto rounded-full shadow-[0_0_12px_#00d2ff]" />
+        <div className="h-1 w-24 bg-gradient-to-r from-[#fbbf24] via-[#f97316] to-[#f59e0b] mx-auto rounded-full shadow-[0_0_12px_rgba(251,191,36,0.6)]" />
       </div>
 
       {/* Glassmorphic Manifesto Card */}
-      <div className="glass-card max-w-4xl mx-auto p-8 md:p-10 rounded-2xl border border-[#00d2ff]/25 bg-[#0c1726]/65 backdrop-blur-md shadow-[0_0_30px_rgba(0,210,255,0.08)] mb-14 text-left space-y-4">
-        <div className="border-l-4 border-[#00d2ff] pl-4 py-1.5 text-[#00d2ff] font-serif text-lg font-semibold italic bg-[#00d2ff]/5 rounded-r-lg">
+      <div className="glass-card max-w-4xl mx-auto p-8 md:p-10 rounded-2xl border border-[#fbbf24]/25 bg-[#0c1726]/80 backdrop-blur-md shadow-[0_0_35px_rgba(251,191,36,0.08)] mb-14 text-left space-y-4">
+        <div className="border-l-4 border-[#fbbf24] pl-4 py-1.5 text-[#fbbf24] font-serif text-lg font-semibold italic bg-[#fbbf24]/10 rounded-r-lg">
           「我的求學歷程與職涯發展，是一個螺旋交織的漸進聚焦過程！」
         </div>
         <p className="text-base text-[#dce3f0] font-light leading-relaxed md:leading-loose">
@@ -165,10 +178,10 @@ export const CareerMilestones: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        {/* Experience Column with Collapsible Feature (First 5 by default) */}
+        {/* Experience Column */}
         <div className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="rounded-xl bg-[#00d2ff]/10 p-3 text-[#00d2ff] border border-[#00d2ff]/30 shadow-[0_0_15px_rgba(0,210,255,0.2)]">
+            <div className="rounded-xl bg-[#fbbf24]/15 p-3 text-[#fbbf24] border border-[#fbbf24]/40 shadow-[0_0_15px_rgba(251,191,36,0.2)]">
               <Building size={24} />
             </div>
             <div>
@@ -177,16 +190,34 @@ export const CareerMilestones: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative border-l-2 border-[#1b2d47] ml-4 pl-6 space-y-6">
+          <div className="relative ml-4 pl-8 space-y-6">
+            {/* Ultra-Thin Timeline Background Track */}
+            <div className="absolute left-[8px] top-4 bottom-4 w-[1.5px] bg-white/15 rounded-full" />
+
+            {/* Ultra-Thin Scroll Progress Line (Yellow -> Warm Orange -> Warm Amber) */}
+            <motion.div
+              style={{ scaleY, transformOrigin: 'top' }}
+              className="absolute left-[8px] top-4 bottom-4 w-[1.5px] rounded-full bg-gradient-to-b from-[#fbbf24] via-[#f97316] to-[#f59e0b] shadow-[0_0_10px_#fbbf24]"
+            />
+
             {visibleExperiences.map((exp, idx) => (
-              <div key={idx} className="glass-card p-6 rounded-xl relative group">
-                {/* Node Circle */}
-                <div className="absolute -left-[31px] top-6 h-4 w-4 rounded-full bg-[#070e17] border-2 border-[#00d2ff] group-hover:bg-[#00d2ff] group-hover:shadow-[0_0_12px_#00d2ff] transition-all duration-300" />
-                <div className="inline-flex items-center gap-1.5 rounded-md bg-[#00d2ff]/10 px-3 py-1 text-xs font-semibold text-[#00d2ff] mb-3">
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0.5, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: '-40px' }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="glass-card p-6 rounded-2xl relative group border border-white/10 hover:border-[#fbbf24]/50 hover:shadow-[0_0_20px_rgba(251,191,36,0.15)] transition-all duration-300"
+              >
+                {/* Small Elegant Yellow/Warm Orange Node Circle */}
+                <div className="absolute -left-[32.5px] top-6 h-3.5 w-3.5 rounded-full bg-[#0b0d14] border-[1.5px] border-[#fbbf24] group-hover:bg-[#fbbf24] group-hover:scale-125 group-hover:shadow-[0_0_12px_#fbbf24] transition-all duration-300 flex items-center justify-center">
+                  <div className="h-1 w-1 rounded-full bg-[#fbbf24] group-hover:bg-white transition-colors" />
+                </div>
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-[#fbbf24]/15 border border-[#fbbf24]/30 px-3 py-1 text-xs font-bold text-[#fbbf24] mb-3">
                   <Calendar size={12} />
                   <span>{exp.period}</span>
                 </div>
-                <h4 className="font-serif text-lg font-semibold text-white group-hover:text-[#00d2ff] transition-colors">
+                <h4 className="font-serif text-lg font-semibold text-white group-hover:text-[#fbbf24] transition-colors">
                   {exp.role}
                 </h4>
                 <ul className="mt-3 space-y-1.5 text-sm text-[#dce3f0] font-light leading-relaxed list-disc list-inside">
@@ -194,14 +225,14 @@ export const CareerMilestones: React.FC = () => {
                     <li key={i}>{d}</li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {experiences.length > 5 && (
             <button
               onClick={() => setShowAllExperiences(!showAllExperiences)}
-              className="w-full py-3.5 rounded-xl bg-[#0c1726] border border-[#00d2ff]/40 text-[#00d2ff] font-medium text-sm flex items-center justify-center gap-2 hover:bg-[#00d2ff]/15 hover:border-[#00d2ff] transition-all duration-300 shadow-[0_0_15px_rgba(0,210,255,0.1)]"
+              className="w-full py-3.5 rounded-xl bg-[#0c1726] border border-[#fbbf24]/40 text-[#fbbf24] font-medium text-sm flex items-center justify-center gap-2 hover:bg-[#fbbf24]/15 hover:border-[#fbbf24] transition-all duration-300 shadow-[0_0_15px_rgba(251,191,36,0.1)] cursor-pointer"
             >
               {showAllExperiences ? (
                 <><span>收折職涯經歷</span><ChevronUp size={16} /></>
@@ -215,7 +246,7 @@ export const CareerMilestones: React.FC = () => {
         {/* Education Column */}
         <div className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="rounded-xl bg-[#00ff88]/10 p-3 text-[#00ff88] border border-[#00ff88]/30 shadow-[0_0_15px_rgba(0,255,136,0.2)]">
+            <div className="rounded-xl bg-[#f97316]/15 p-3 text-[#f97316] border border-[#f97316]/40 shadow-[0_0_15px_rgba(249,115,22,0.2)]">
               <GraduationCap size={24} />
             </div>
             <div>
@@ -224,16 +255,34 @@ export const CareerMilestones: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative border-l-2 border-[#1b2d47] ml-4 pl-6 space-y-6">
+          <div className="relative ml-4 pl-8 space-y-6">
+            {/* Ultra-Thin Timeline Background Track */}
+            <div className="absolute left-[8px] top-4 bottom-4 w-[1.5px] bg-white/15 rounded-full" />
+
+            {/* Ultra-Thin Scroll Progress Line */}
+            <motion.div
+              style={{ scaleY, transformOrigin: 'top' }}
+              className="absolute left-[8px] top-4 bottom-4 w-[1.5px] rounded-full bg-gradient-to-b from-[#fbbf24] via-[#f97316] to-[#f59e0b] shadow-[0_0_10px_#f97316]"
+            />
+
             {education.map((edu, idx) => (
-              <div key={idx} className="glass-card p-6 rounded-xl relative group">
-                {/* Node Circle */}
-                <div className="absolute -left-[31px] top-6 h-4 w-4 rounded-full bg-[#070e17] border-2 border-[#00ff88] group-hover:bg-[#00ff88] group-hover:shadow-[0_0_12px_#00ff88] transition-all duration-300" />
-                <div className="inline-flex items-center gap-1.5 rounded-md bg-[#00ff88]/10 px-3 py-1 text-xs font-semibold text-[#00ff88] mb-3">
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0.5, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: '-40px' }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="glass-card p-6 rounded-2xl relative group border border-white/10 hover:border-[#f97316]/50 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] transition-all duration-300"
+              >
+                {/* Small Elegant Node Circle */}
+                <div className="absolute -left-[32.5px] top-6 h-3.5 w-3.5 rounded-full bg-[#0b0d14] border-[1.5px] border-[#f97316] group-hover:bg-[#f97316] group-hover:scale-125 group-hover:shadow-[0_0_12px_#f97316] transition-all duration-300 flex items-center justify-center">
+                  <div className="h-1 w-1 rounded-full bg-[#f97316] group-hover:bg-white transition-colors" />
+                </div>
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-[#f97316]/15 border border-[#f97316]/30 px-3 py-1 text-xs font-bold text-[#f97316] mb-3">
                   <Award size={12} />
                   <span>{edu.period}</span>
                 </div>
-                <h4 className="font-serif text-lg font-semibold text-white group-hover:text-[#00ff88] transition-colors">
+                <h4 className="font-serif text-lg font-semibold text-white group-hover:text-[#f97316] transition-colors">
                   {edu.role}
                 </h4>
                 <ul className="mt-3 space-y-1.5 text-sm text-[#dce3f0] font-light leading-relaxed list-disc list-inside">
@@ -241,7 +290,7 @@ export const CareerMilestones: React.FC = () => {
                     <li key={i}>{d}</li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

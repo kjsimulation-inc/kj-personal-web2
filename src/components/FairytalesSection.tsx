@@ -130,7 +130,7 @@ export const FairytalesSection: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="glass-card relative border border-[#00ff88]/30 bg-[#0c1726]/95 backdrop-blur-xl max-w-3xl w-full max-h-[85vh] flex flex-col rounded-2xl shadow-[0_0_50px_rgba(0,255,136,0.15)] z-10 overflow-hidden"
+              className="glass-card relative border border-[#00ff88]/30 bg-[#0c1726]/95 backdrop-blur-xl max-w-5xl w-full max-h-[85vh] flex flex-col rounded-2xl shadow-[0_0_50px_rgba(0,255,136,0.15)] z-10 overflow-hidden"
             >
               {/* Modal Header */}
               <div className="p-6 md:p-8 border-b border-[#00ff88]/15 flex items-start justify-between bg-[#00ff88]/5">

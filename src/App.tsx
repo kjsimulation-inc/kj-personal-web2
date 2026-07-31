@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -7,10 +7,47 @@ import { PortfolioCoursesSection } from './components/PortfolioCoursesSection';
 import { CoursesSection } from './components/CoursesSection';
 import { FairytalesSection } from './components/FairytalesSection';
 import { AcademicSection } from './components/AcademicSection';
+import { AmbientBackground } from './components/AmbientBackground';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [heroAnimTrigger, setHeroAnimTrigger] = useState(0);
+
+  // Auto-highlight active section in left Sidebar as user scrolls
+  useEffect(() => {
+    const sectionIds = [
+      'hero',
+      'about',
+      'resume',
+      'portfolio-courses',
+      'courses',
+      'fairytales',
+      'academic',
+    ];
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -45% 0px',
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const handleSelectSection = (id: string) => {
     setActiveSection(id);
@@ -20,12 +57,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070e17] text-[#dce3f0] font-sans antialiased selection:bg-[#00d2ff]/30 selection:text-[#00d2ff]">
-      {/* Background Subtle Tech Ambient Orbs */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#00d2ff]/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/3 right-10 w-[500px] h-[500px] bg-[#00ff88]/5 rounded-full blur-3xl" />
-      </div>
+    <div className="min-h-screen bg-[#0b0d14] text-[#dce3f0] font-sans antialiased selection:bg-[#00d2ff]/30 selection:text-[#00d2ff]">
+      {/* Gemini Deep Blue Ambient Background */}
+      <AmbientBackground />
 
       <div className="flex relative z-10">
         {/* Left Vertical Navigation Sidebar */}
